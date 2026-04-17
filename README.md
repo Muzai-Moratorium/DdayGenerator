@@ -6,7 +6,13 @@
 
 </div>
 
-<div align="center"><img src="http://localhost:3000/api/dday?date=2025-09-22&label=Coding+Since+2025.09.22&color=333ab2&bg=e0e7ff" /></div>
+<div align="end">
+  <img src="https://dday-generator.vercel.app/api/dday?date=2025-09-22&label=Coding+Since+2025.09.22&color=333ab2&bg=e0e7ff" />
+</div>
+
+<div align="center"><img src="https://dday-generator.vercel.app/api/dday?date=2025-09-22&label=Coding+Since+2025.09.22&color=333ab2&bg=e0e7ff" /></div>
+
+<div align="start"><img src="https://dday-generator.vercel.app/api/dday?date=2025-09-22&label=Coding+Since+2025.09.22&color=333ab2&bg=e0e7ff" /></div>
 
 ---
 
