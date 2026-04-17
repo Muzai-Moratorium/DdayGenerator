@@ -21,6 +21,8 @@ const translations = {
     copy: "Copy",
     copied: "✔",
     placeholder: "예: Study Hard",
+    markdown: "Markdown",
+    html: "HTML",
   },
   en: {
     github: "Visit GitHub",
@@ -35,6 +37,8 @@ const translations = {
     copy: "Copy",
     copied: "✔",
     placeholder: "e.g., Study Hard",
+    markdown: "Markdown",
+    html: "HTML",
   },
 };
 
@@ -44,7 +48,8 @@ export default function Home() {
   const [label, setLabel] = useState("Coding Since 2025.09.22");
   const [color, setColor] = useState("#333ab2");
   const [bg, setBg] = useState("#e0e7ff");
-  const [copied, setCopied] = useState(false);
+  const [copiedMd, setCopiedMd] = useState(false);
+  const [copiedHtml, setCopiedHtml] = useState(false);
   const [origin, setOrigin] = useState("");
 
   const t = translations[lang];
@@ -69,11 +74,25 @@ export default function Home() {
     return `![${label}](${getBadgeUrl()})`;
   };
 
-  const handleCopy = async () => {
+  const getHtml = () => {
+    return `<div align="center"><img src="${getBadgeUrl()}" /></div>`;
+  };
+
+  const handleCopyMd = async () => {
     try {
       await navigator.clipboard.writeText(getMarkdown());
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
+      setCopiedMd(true);
+      setTimeout(() => setCopiedMd(false), 2000);
+    } catch (err) {
+      console.error("Failed to copy:", err);
+    }
+  };
+
+  const handleCopyHtml = async () => {
+    try {
+      await navigator.clipboard.writeText(getHtml());
+      setCopiedHtml(true);
+      setTimeout(() => setCopiedHtml(false), 2000);
     } catch (err) {
       console.error("Failed to copy:", err);
     }
@@ -173,15 +192,34 @@ export default function Home() {
             />
           ) : null}
 
-          <div className={styles.codeBlock}>
-            {getMarkdown()}
-            <button
-              className={styles.copyButton}
-              onClick={handleCopy}
-              type="button"
-            >
-              {copied ? t.copied : t.copy}
-            </button>
+          <div className={styles.guideGrid}>
+            <div className={styles.guideItem}>
+              <span className={styles.guideLabel}>{t.markdown}</span>
+              <div className={styles.codeBlock}>
+                <code className={styles.codeText}>{getMarkdown()}</code>
+                <button
+                  className={styles.copyButton}
+                  onClick={handleCopyMd}
+                  type="button"
+                >
+                  {copiedMd ? t.copied : t.copy}
+                </button>
+              </div>
+            </div>
+
+            <div className={styles.guideItem}>
+              <span className={styles.guideLabel}>{t.html}</span>
+              <div className={styles.codeBlock}>
+                <code className={styles.codeText}>{getHtml()}</code>
+                <button
+                  className={styles.copyButton}
+                  onClick={handleCopyHtml}
+                  type="button"
+                >
+                  {copiedHtml ? t.copied : t.copy}
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
