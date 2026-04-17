@@ -7,7 +7,23 @@ import styles from "./page.module.scss";
 
 type Lang = "ko" | "en";
 
-const translations = {
+interface TranslationContent {
+  github: string;
+  title: string;
+  subtitle: string;
+  dateLabel: string;
+  textLabel: string;
+  colorLabel: string;
+  bgLabel: string;
+  previewTitle: string;
+  copy: string;
+  copied: string;
+  placeholder: string;
+  markdown: string;
+  html: string;
+}
+
+const translations: Record<Lang, TranslationContent> = {
   ko: {
     github: "깃허브 방문",
     title: "D-Day Badge Generator",
@@ -113,7 +129,11 @@ export default function Home() {
         >
           <FaGithubSquare size={24} />
         </Link>
-        <button className={styles.actionButton} onClick={toggleLang}>
+        <button
+          className={styles.actionButton}
+          onClick={toggleLang}
+          type="button"
+        >
           <FaLanguage size={24} />
           <span>{lang === "ko" ? "EN" : "KO"}</span>
         </button>
