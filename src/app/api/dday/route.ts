@@ -1,9 +1,7 @@
 import type { NextRequest } from "next/server";
-import type { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-
 
   const dateParam = searchParams.get("date") || "2025-09-22";
   const labelParam = searchParams.get("label") || `Coding Since ${dateParam}`;
