@@ -1,8 +1,8 @@
-import { NextRequest } from "next/server";
+import type { NextRequest } from "next/server";
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  
+
   const dateParam = searchParams.get("date") || "2025-09-22";
   const labelParam = searchParams.get("label") || `Coding Since ${dateParam}`;
   const colorParam = searchParams.get("color") || "333ab2";
@@ -10,8 +10,8 @@ export async function GET(request: NextRequest) {
 
   const startDate = new Date(dateParam);
   const today = new Date();
-  
-  if (isNaN(startDate.getTime())) {
+
+  if (Number.isNaN(startDate.getTime())) {
     return new Response("Invalid Date Format. Use YYYY-MM-DD", { status: 400 });
   }
 
