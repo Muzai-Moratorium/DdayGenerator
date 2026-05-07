@@ -11,7 +11,7 @@ export async function GET(request: NextRequest) {
   const startDate = new Date(dateParam);
   const today = new Date();
 
-  if (isNaN(startDate.getTime())) {
+  if (Number.isNaN(startDate.getTime())) {
     return new Response("Invalid Date Format. Use YYYY-MM-DD", { status: 400 });
   }
 

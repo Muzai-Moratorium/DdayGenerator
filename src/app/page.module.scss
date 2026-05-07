@@ -31,10 +31,15 @@
       text-decoration: none;
       cursor: pointer;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 
       &:hover {
         color: var(--primary);
+        svg{
+          transform: rotateZ(30deg);
+          transition:all  0.3s;
+        }
       }
 
       &:active {
@@ -42,8 +47,15 @@
       }
 
       svg {
+    
         flex-shrink: 0;
+        
       }
+      // .githublogo{
+      //   &:hover{
+      //     transform: rotateX(45deg);
+      //   }
+      // }
     }
   }
 
